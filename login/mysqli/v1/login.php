@@ -57,7 +57,7 @@
     <?php
     }
     else{
-        //Show the loggin form
+        //Show the login form
         ?>
         
         <h1>Login</h1>
