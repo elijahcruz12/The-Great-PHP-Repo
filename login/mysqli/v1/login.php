@@ -1,5 +1,11 @@
 <?php
 //The login page
+//
+//Lets check if we are logged in. If we are, we redirect to the index.php
+if(!empty($_SESSION['loggedin']) && !empty($_SESSION['username'])){
+header("Location: index.php");
+}
+
 ?>
 <html>
     <head>
@@ -46,23 +52,13 @@
     <body>
 
     <?php
-    //Here we add the sql.php file
-    include_once("sql.php");
-    
-    if(!empty($_SESSION['loggedin']) && !empty($_SESSION['username'])){
-        //You are logged in.
-    ?>
-        <h1>Error</h1>
-        <p>You are logged in.</p>
-    <?php
-    }
-    else{
+    if(empty($_SESSION['loggedin'])){
         //Show the login form
         ?>
         
         <h1>Login</h1>
         
-        <form action="action_page.php">
+        <form action="login.php" method="post">
             <div class="container">
                 <label><b>Username</b></label>
                 <input type="text" placeholder="Enter Username" name="uname" required>
